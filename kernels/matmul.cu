@@ -48,7 +48,7 @@ int main() {
     // Copy result matrix from device back to host
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
 
-    // Verify the result (optional)
+    // Verify the result
     bool success = true;
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j < N; ++j) {

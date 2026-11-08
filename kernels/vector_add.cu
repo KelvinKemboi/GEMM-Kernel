@@ -42,11 +42,17 @@ int main() {
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
 
     // Verify the result
+    bool success = true;
     for (int i = 0; i < N; ++i) {
         if (h_C[i] != h_A[i] + h_B[i]) {
             std::cerr << "Error at index " << i << ": " << h_C[i] << " != " << h_A[i] + h_B[i] << std::endl;
+            success = false;
             break;
         }
+    }
+
+    if (success) {
+        std::cout << "Vector addition successful!" << std::endl;
     }
 
     // Free device memory
